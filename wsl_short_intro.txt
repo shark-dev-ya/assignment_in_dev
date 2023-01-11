@@ -1,0 +1,55 @@
+If you are in the terminal with ubuntu and you see somethingsl ike:
+
+user@hostname:<path> $    <---- if you are using a termminal as user in your Linux home folder>
+user@hostname:<path> #   <--- if you are using a terminal as root (means administrator)>
+
+
+
+user@hostname:~ $    <---- if you are using a termminal as user in your Linux home folder>
+
+~ == /home/<your_username/>
+
+
+Below is a note for examples below:
+
+$ command 
+
+means, "run in a terminal a command"
+
+# some free text     <---- comment >
+
+<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>
+We are using "bash" shell in a linux terminal. 
+
+To see a content of a current directory, we are using ls
+$ ls
+
+to change a direcvtory to another, we are using tis command:
+$ cd <destination folder>
+
+Note:
+We can access Windows folders by path:
+
+/mnt/c/ .... 
+
+$ cd /mnt/c
+
+
+to create a folder we are using the following command:
+$ mkdir <name of folder>
+for example:
+$ mkdir dev
+
+
+We are using /mnt/c/dev as a main folder for our projects.
+Each project should have it's own folde. An example of folder structure:
+/mnt/c/dev/ .
+     . Project1
+          . Project1_git_repo
+          .Project1_local_copy and etc.
+     . Project2
+        . Project2 _git_ repop
+        . Project2_local_copy
+
+: goal: create a folder for "assignment_in_dev"
+git repo: "assignment_in_dev"
