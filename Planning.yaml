@@ -9,14 +9,72 @@ GroupAssignment:
       - create a source file for main function and some tests.
       - include neccessary header files
       - define main function and create an object of a class for file File_IO
+
       - ?build it and see at least some output
       - checkpoint
       - add constructor and destructor for a Class. 
       - choose a class as a container for strings (std::list, std::vector, etc)
       - define 4 functions with almost empty body and maybe debug prints
+
       - add a logic to open and close a file 
       - implement the 4 functions correctly (split into snall sub-tasks if needed)
       -  ?build a class as a library, build main function with linking a labirary
-      - rewrite a functinliaty for main cfunction to be as "echo"
-      -
+      - rewrite a functinliaty for main function to be as "echo"
+    LeftOver: 
+      - write UT using GoogleTest
+      - write ComponentTests using Python
   CAN_Messages:
+
+
+Planning:
+  Friday_01_13:
+    - Exercise1: |
+        In github -> Your private repo : Create 2 branches ( develop , feature )
+        In your local repo:
+        0) fetch changes.
+        1) checkout "develop" branch.
+          1.1) create a text file,which contains a text line "i am from develop branch" 
+          1.2) commit your change in local repo in a branch (develop)
+          1.3) push your "develop" branch to remote repo.
+               -> git push origin develop
+        2) checkout "feature" branch.
+          2.1) create a text file,which contains a text line "i am from feature branch" 
+          2.2) commit your change in local repo in a branch (feature)
+          1.3) push your "feature" branch to remote repo.
+               -> git push origin feature
+        3) check on github webpage, that you have:
+          3.1) in a branch "develop": a text file with text.
+          3.2) in a branch "feature": a text file with text.
+    - Main Work:
+      - ?build it and see at least some output
+      - checkpoint ( share your repo with shark, so he can check it.)
+      - add constructor and destructor for a Class (File_IO). (you can print a messsage for now) 
+      - |
+        choose a class as a container for strings (std::list, std::vector, etc)
+        Take a look at these webpages:
+        https://cplusplus.com/reference/list/list/push_back/ 
+        https://cplusplus.com/reference/vector/vector/push_back/ 
+
+      - define 4 functions with almost empty body and maybe debug prints
+  Monday_01_16:
+    - add a logic to open and close a file 
+      Remember of a situation if file doesn't exist.
+    - implement the 4 functions correctly (split into snall sub-tasks if needed)
+        - read from a file a line of string.
+        - read from a file a container of strings.
+        - write to a file a string, which contains exactly 1 line.
+        - write to a file a container of strings.
+    -  ?build a class as a library, build main function with linking a library
+        We adapting our (Makefile|CMakeLists.txt) to build class separately.
+        and build main.cpp file also separately with linking a library.
+        
+        TODO:: add info how to build and link a library in Makefile.
+
+    - rewrite a functionality for main function to be as "echo"
+
+    - If you have done tasks above (except build a library/executable file)
+     then you can start to work on "Main Component" part - 
+     - create a folder
+     - create a Makefile|CMakeLists.txt
+     - create a source file 
+     - define main function. 
