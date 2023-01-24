@@ -1,0 +1,20 @@
+@startuml "CAN_Messages"
+
+actor "developer" as developer
+participant "Python script,\n with logic" as can_messages
+collections "Json file\nprovided by user" as json_file
+collections "Output C++ File" as out_cpp_file
+collections "Output Header File" as out_header_file
+
+developer -> can_messages : runs a script
+activate can_messages
+
+can_messages -> json_file : read an input
+can_messages -> can_messages : construct a data.
+can_messages -> can_messages : generate an output
+can_messages -> out_header_file : write generated \noutput into Header file
+can_messages -> out_cpp_file : write generated \noutput into C++ file
+can_messages -> developer : done
+deactivate can_messages
+
+@enduml

@@ -6,7 +6,7 @@ GroupAssignment:
     BigTask: write a C++ class to work with files.
       - create header and source file for C++ class
       - create an empty class.
-      - create a source file for main function and some tests.
+      - create a source file for main function and some tests. / int main(int argc, char*argv[]) 
       - include neccessary header files
       - define main function and create an object of a class for file File_IO
 
@@ -78,3 +78,61 @@ Planning:
      - create a Makefile|CMakeLists.txt
      - create a source file 
      - define main function. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CAN_Messages:
+  Preparation:
+    - generate json file ( or take it )
+    - create a Python script (in your private repo, you have a folder "CAN_Messages")
+    - write a function to read a json file and print it on the console.
+    - make folders (for output files)
+    - write a function in Python script to write list of strings into a file
+    - function to convert json filename into uppercase and generate related lines.
+    - using variables and strings -> format output C++ code. 
+    - write functions to generate a text with placeholders instead of unknown variables.
+    - define functions to generate a string with get_ , set_ and private fielld for each element.
+    - 
+
+
+  What don't we know yet:
+    - Convert json data into C++ code?
+    - Ut for python?
+
+
+
+
+
+
+
+
+
+
+
+
+
