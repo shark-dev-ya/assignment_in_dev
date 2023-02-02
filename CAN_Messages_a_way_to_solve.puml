@@ -1,0 +1,82 @@
+@startuml "CAN_Messages_a_way_to_solve"
+
+start
+
+: user started Python script;
+
+if (the path to the .json file specified?\nRight now is an exception:\n the path might be specified ONLY in main function) then(no)
+    : exit script with message;
+else (yes)
+    : save path to a variable;
+    : Note: We define a variable in one function(main),\n then just pass it as an argument;
+    : In all "nested" functions \nwe should address the .json file via variable (or argument) ;
+endif
+
+if (the .json file has correct format?) then(no)
+    : exit script.;
+else (yes)
+    partition "convert json into a dictionary (dict) " {
+        : Read the content of a filename (specified by a variable);
+        : We are using "json" package/module to decode \nthe content of a json file into a dictionary\n(using the function json.loads / json.load ) ;
+
+    }
+endif
+
+: (small step, will be used later) \n define a function to write into a file something (arguments: filename, data?);
+
+
+
+:Python Script generates a filename for Header file \nbased on a filename of the .json document\n(using the variable,which stores the .json filename) ;
+partition "Python Script generates Header file" {
+
+partition "Python Script generates the content to be written" {
+    : The Header file (text file) is a list of strings for us for now;
+    : To fill in the list of strings, we are using "append" function ;
+    : append to a list (via +=) a string;
+
+    : using format'string ( or string format)  we are filling in the list of string;
+    : with #ifndef , #defin , class and Constructor \n (We are using a variable,which contains a filename);
+
+    : based on information from a dictionary about a signal, we "create" functions ;
+    :define a function, which takes arguments\n and return formatted string value of that variable \n\nreturns formatted string;
+    repeat :For Each iterating signal in our dictionary;
+        :Iterating element contains information about: \n\tsignal name,\n\tvalue type,\n\tlength,\n\tcomment;
+        : call a function with arguments, which returns formatted string ;
+        : returned string append to the List of strings\n(which contains already Include guard, class name and constructor); 
+
+    repeat while (we have available signal?)
+}
+:Python Script writes the generated content into a Header file\n(using the function defined above to write something into a file,\n speicifed the filename and data to write);
+}
+:Python Script generates a filename for C++  file \nbased on a filename of the .json document\n(using the variable,which stores the .json filename) ;
+partition "Python Script generates C++ file" {
+partition "Python Script generates the content to be written" {
+    :Define list of strings (to fill in with lines,representing C++ code);
+    :define a function, which takes a Header filename\n and return a formatted string with "#include";
+    : WE SHOULD WRITE "#include <sstream>";
+    :call a function with a variable,which stores a filename of a Header file ;
+    :returned string(or strings) we are adding into the list of Strings;
+
+    :define a function, which takes list of signals and a class name\n and returns formatted string with a contructor;
+    :returned string we are adding into the list of strings;
+
+    :define a function to generate "get" method \nfor given signal (signal might specified as an argument);
+    :define a function to generate "set" function \nfor given signal (signal might specified as an argument);
+    
+    repeat :For Each iterating signal in our dictionary;
+        :Iterating element contains information about: \n\tsignal name,\n\tvalue type,\n\tlength,\n\tcomment;
+        : call the function to generate "get" method for a signal ;
+        : returned string append to the List of strings); 
+        : call the function to generate "set" method for a signal ;
+        : returned string append to the List of strings); 
+    repeat while (we have available signal?)
+
+}   
+:Python Script writes the generated content into a C++ file\n(using the function defined above to write something into a file,\n speicifed the filename and data to write);
+
+}
+
+stop
+
+
+@enduml

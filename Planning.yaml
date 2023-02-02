@@ -85,22 +85,7 @@ Planning:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# V2 - V4 
 
 
 
@@ -132,7 +117,54 @@ CAN_Messages:
 
 
 
+Thursday Plan:
+  - Active and "Hot" discussions how to implement or solve Main Component 
+  - Planning part -> filling in the YAML file with steps and INFO 
+  - (If we have time) -> Fixing CMAke for Main Component to link file_io library
 
+
+# V5 - V6
+MainComponent:
+  Dependencies:
+    - File_IO:
+       - read a content ( line-by-line or the whole file)
+       - write a content ( line-by-line or the whole container of strings)
+    - CAN_Messages:
+  Input:
+    - filename to read ( we are expecting a file name of a .txt file (text file))
+    - optional filename to write ( for an output file).
+
+    - a format: ./main_component <input> <?output>
+    - an example of a call: ./main_component commands.txt
+    - an example of a call: ./main_component commands.txt commands_in_json.txt
+  Output:
+    - write the resulting string ( after each function call) in an output file
+  Logic:
+    step1: user calls an executable file (main_component) with provided filename / filenames
+    step2: MainComponent uses file_io component(lib) to read the input file. 
+
+    step3:
+      description: iterate through each of the strings and convert it into JSON Line.
+      substep1: For the each line in the data read from the input file
+      tip_for_step2: |
+        write a function, which takes a string, checks the beginning (is it "get" or "set")
+        write 2 functions:
+        1) which parses "get" command/line
+        2) which parses "set" command/line
+        in the big function, check the first 3 letters and if:
+          it starts with "get" -> call a function to parse "get" line 
+          it starts with "set" -> call a function to parse "set" line.
+        P.S. It is fine to have a bunch of "if/else"
+      substep2: |
+        call a (function/class method) from a generated class (from CAN_messages) 
+        according to the text, which is stated in the line.
+      substep3: returned string from the(function/class method) we write into output file.    
+
+    stepEnd: |
+      write the generated output (in JSON format) by using file_io component
+      into an output file.
+
+  Tasks:
 
 
 

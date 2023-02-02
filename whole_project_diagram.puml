@@ -1,0 +1,58 @@
+@startuml "whole project"
+
+actor "User" as user 
+
+participant "Output File\nFrom MainComponent" as mc_output
+
+control "MainComponent" as main_comp
+participant "Input File\nFor MainComponent" as mc_input
+control "CAN_Messages" as can_msg
+
+participant "File_IO" as file_io
+
+participant "Generated Class\nFrom CAN_messages" as gen_cls
+participant "input file\nFor CAN_Messages" as can_input
+
+
+user -> can_msg : call a script
+activate can_msg
+can_msg -> can_input : read the json file (provided by user, now it is signals.json)
+can_msg -> can_msg : process it
+can_msg -> gen_cls : creates a Header and a Source file
+deactivate can_msg
+can_msg -> user : done
+
+
+
+user -> main_comp : ./main_component input.txt
+activate main_comp
+
+main_comp -> file_io : call a function to read a file
+activate file_io
+file_io -> mc_input : read the content
+activate mc_input
+mc_input -> file_io : the content
+deactivate mc_input
+file_io -> main_comp: the content from input file
+deactivate file_io
+
+loop "until next line"
+main_comp -> main_comp : take a line
+main_comp -> main_comp : parse and find a method to call
+main_comp -> gen_cls :  calls correspond method/function
+activate gen_cls
+gen_cls -> main_comp : return String
+deactivate gen_cls
+main_comp -> file_io : write returned string into output file ( provided by user)
+activate file_io
+file_io -> mc_output : write line into a file
+activate mc_output
+mc_output -> file_io
+deactivate mc_output
+file_io -> main_comp
+deactivate file_io
+
+
+end
+
+@enduml
